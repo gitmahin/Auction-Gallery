@@ -38,7 +38,7 @@ const Active_Auctions = () => {
       position: "top-right"
     })
 
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    localStorage.setItem("favorites", JSON.stringify([...favorites, product]));
   };
 
   const removeItemFromFavoriteItems = (id) => {
