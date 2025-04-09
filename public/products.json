@@ -1,0 +1,66 @@
+[
+  {
+    "id": "a1001",
+    "title": "Vintage Leica M3 Camera",
+    "description": "A classic Rolex watch from the 1970s in excellent condition.",
+    "currentBidPrice": 3200.5,
+    "timeLeft": "3 Days left",
+    "bidsCount": 12,
+    "image": " https://i.ibb.co.com/nsKWgpy1/Bid1-min.png"
+  },
+  {
+    "id": "a1002",
+    "title": "1965 Gibson SG Standard Electric Guitar",
+    "description": "Handcrafted Victorian-era wooden chair with intricate carvings.",
+    "currentBidPrice": 450.0,
+    "timeLeft": "8 Days left",
+    "bidsCount": 5,
+    "image": " https://i.ibb.co.com/67zfP4Hf/Bid2-min.png https://i.ibb.co.com/"
+  },
+  {
+    "id": "a1003",
+    "title": "Original Apple Macintosh 128K (1984)",
+    "description": "Apple MacBook Pro 14-inch with M1 Pro chip, 16GB RAM, 512GB SSD.",
+    "currentBidPrice": 1500.75,
+    "timeLeft": "6 Days left",
+    "bidsCount": 18,
+    "image": "https://i.ibb.co.com/jvsWYF69/Bid3-min.png"
+  },
+  {
+    "id": "a1004",
+    "title": "Rolex Submariner 16610",
+    "description": "Autographed jersey from a famous football player, in pristine condition.",
+    "currentBidPrice": 980.0,
+    "timeLeft": "2 Days left",
+    "bidsCount": 9,
+    "image": "https://i.ibb.co.com/202Ywv0G/Bid4-min.png"
+  },
+  {
+    "id": "a1005",
+    "title": "First Edition 'The Great Gatsby' by F. Scott Fitzgerald",
+    "description": "Latest GoPro action camera, waterproof, with accessories.",
+    "currentBidPrice": 399.99,
+    "timeLeft": "5 Days left5",
+    "bidsCount": 7,
+    "image": " https://i.ibb.co.com/4nbWBNTW/Bid5-min.png",
+    "icon": ""
+  },
+  {
+    "id": "a1006",
+    "title": "Mid-Century Modern Eames Lounge Chair",
+    "description": "High-performance mountain bike with 21-speed gear system.",
+    "currentBidPrice": 850.0,
+    "timeLeft": "1 Days left",
+    "bidsCount": 11,
+    "image": " https://i.ibb.co.com/3YTkzyTG/Bid6-min.png"
+  },
+  {
+    "id": "a1007",
+    "title": "Banksy Original Screen Print",
+    "description": "Sony PlayStation 5 with one controller and three games.",
+    "currentBidPrice": 650.25,
+    "timeLeft": "9 Days left",
+    "bidsCount": 14,
+    "image": " https://i.ibb.co.com/PzCW71CM/Bid7-min.png"
+  }
+]
