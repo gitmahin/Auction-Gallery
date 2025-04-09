@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { CiHeart } from 'react-icons/ci';
-import { ImCross } from 'react-icons/im';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useEffect, useRef, useState } from "react";
+import { CiHeart } from "react-icons/ci";
+import { ImCross } from "react-icons/im";
+import { FaHeart } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Active_Auctions = () => {
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
-    fetch('products.json')
-      .then(res => res.json())
-      .then(data => setProducts(data));
+    fetch("products.json")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
   }, []);
   // console.log(products);
 
@@ -22,14 +24,22 @@ const Active_Auctions = () => {
     const newPrice = total + price;
     SetTotal(newPrice);
     toast.success(`${product.title}  ! ✅`, {
-      position: 'top-right',
+      position: "top-right",
     });
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
   };
 
-  const removeItemFromFavoriteItems = id => {
-    const remainingFavorites = favorites.filter(item => item.id !== id);
+  const removeItemFromFavoriteItems = (id) => {
+    const remainingFavorites = favorites.filter((item) => item.id !== id);
+    localStorage.setItem("favorites", JSON.stringify(remainingFavorites))
     setFavorites(remainingFavorites);
   };
+
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem("favorites")
+    setFavorites(JSON.parse(storedFavorites) || []);
+  }, [])
 
   return (
     <div className="bg-[#EBF0F5]">
@@ -40,17 +50,17 @@ const Active_Auctions = () => {
         </p>
         <div className="parent flex justify-between gap-5 my-7">
           <div className="child-1 bg-white w-[70%]">
-            <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif' }}>
+            <div style={{ padding: "30px", fontFamily: "Arial, sans-serif" }}>
               <table
                 style={{
-                  width: '100%',
-                  borderCollapse: 'collapse',
-                  backgroundColor: '#fff',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                  width: "100%",
+                  borderCollapse: "collapse",
+                  backgroundColor: "#fff",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                 }}
               >
                 <thead>
-                  <tr style={{ backgroundColor: '#007bff', color: 'white' }}>
+                  <tr style={{ backgroundColor: "#007bff", color: "white" }}>
                     <th>Item</th>
                     <th></th>
                     <th>Current Bid</th>
@@ -59,11 +69,11 @@ const Active_Auctions = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {products.map(product => (
+                  {products.map((product) => (
                     <tr
                       className="border-t"
                       key={product.id}
-                      style={{ textAlign: 'center' }}
+                      style={{ textAlign: "center" }}
                     >
                       <td>
                         <img
@@ -71,7 +81,7 @@ const Active_Auctions = () => {
                           className="w-16 h-16 rounded"
                         />
                       </td>
-                      <td>{product.title}</td>
+                      <td align="left">{product.title}</td>
                       <td>$ {product.currentBidPrice}</td>
                       <td> {product.timeLeft}</td>
                       <td className="flex items-center justify-center h-20">
@@ -79,10 +89,23 @@ const Active_Auctions = () => {
                           onClick={() =>
                             handelHeartIcon(product, product.currentBidPrice)
                           }
-                          className="cursor-pointer"
+                          className={`cursor-pointer`}
+                          disabled={favorites.find(
+                            (favProduct) => favProduct.id === product.id
+                          )}
                         >
-                          {' '}
-                          <CiHeart size={28} />
+                          {" "}
+                          {favorites.find(
+                            (favProduct) => favProduct.id === product.id
+                          ) ? (
+                            <FaHeart
+                              size={28}
+                              className="text-red-600 cursor-not-allowed"
+                              title="🚫"
+                            />
+                          ) : (
+                            <CiHeart size={28} />
+                          )}
                         </button>
                       </td>
                     </tr>
@@ -93,29 +116,29 @@ const Active_Auctions = () => {
           </div>
           <div className="child-2  bg-white w-[30%]">
             <h2
-              style={{ borderBottom: ' 1px solid #DCE5F3' }}
+              style={{ borderBottom: " 1px solid #DCE5F3" }}
               className="text-2xl font-semibold flex items-center justify-center gap-2 w-full text-center"
             >
               <span>
                 <CiHeart />
-              </span>{' '}
+              </span>{" "}
               Favorite Items
             </h2>
 
-            {favorites.map(favorite => {
+            {favorites.map((favorite) => {
               return (
                 <div className="p-2 " key={favorite.id}>
                   <div
                     style={{
-                      border: ' 1px solid #DCE5F3',
-                      borderRadius: '10px',
+                      border: " 1px solid #DCE5F3",
+                      borderRadius: "10px",
                     }}
                     className="flex items-center gap-4 mt-3 "
                   >
                     <div
                       style={{
-                        border: ' 1px solid #DCE5F3',
-                        borderRadius: '10px',
+                        border: " 1px solid #DCE5F3",
+                        borderRadius: "10px",
                       }}
                       className="ml-3"
                     >
@@ -152,7 +175,7 @@ const Active_Auctions = () => {
               );
             })}
             <div
-              style={{ borderTop: ' 1px solid #DCE5F3' }}
+              style={{ borderTop: " 1px solid #DCE5F3" }}
               className="flex gap-5 justify-between mt-10 text-xl font-semibold px-6"
             >
               <h2>Total Bids Amount </h2>
